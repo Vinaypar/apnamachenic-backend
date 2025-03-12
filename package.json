@@ -1,12 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "description": "ApnaMechanic backend for chatbot, booking, and contact services.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "node index.js"
   },
   "engines": {
-    "node": "22.12.0"
+    "node": "22.x" 
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
@@ -15,5 +17,14 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.12.1"
-  }
+  },
+  "author": "ApnaMechanic Team",
+  "license": "ISC",
+  "keywords": [
+    "apnamechanic",
+    "backend",
+    "chatbot",
+    "booking",
+    "auto-service"
+  ]
 }
