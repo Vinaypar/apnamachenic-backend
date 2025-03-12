@@ -102,7 +102,7 @@ app.get("/api/chat/history", async (req, res) => {
     const formattedHistory = chatHistory.map(chat => ({
       user: chat.userMessage,
       bot: chat.botResponse,
-      time: new Date(chat.timestamp).toLocaleString(), // ✅ Clean date format
+      time: new Date(chat.timestamp).toLocaleString(),
     }));
 
     res.json(formattedHistory);
@@ -155,6 +155,20 @@ app.post("/api/book", async (req, res) => {
     console.error("❌ Error saving booking:", error.message);
     res.status(500).json({ success: false, message: "Error saving booking." });
   }
+});
+
+// ================================
+// 📌 Health Check Endpoint (For Render)
+// ================================
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Server is healthy." });
+});
+
+// ✅ Graceful Shutdown (Ensure MongoDB connection closes properly)
+process.on("SIGINT", async () => {
+  console.log("🛑 Shutting down...");
+  await mongoose.connection.close();
+  process.exit(0);
 });
 
 // ================================
