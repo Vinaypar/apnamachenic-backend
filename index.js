@@ -171,6 +171,11 @@ process.on("SIGINT", async () => {
   process.exit(0);
 });
 
+// 📌 Fast Health Check (Minimal Operations)
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Service is running." });
+});
+
 // ================================
 // ✅ Start Server
 // ================================
